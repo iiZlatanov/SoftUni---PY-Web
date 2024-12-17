@@ -17,13 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from urls_and_views_demos.departments.views import index, department_1_details, department_2_details, department_details, department_details_by_name
+from urls_and_views_demos.departments.views import department_details, department_details_by_name
 
 urlpatterns = (
     path("admin/", admin.site.urls),
 
+    path('', include("urls_and_views_demos.core.urls")),
+
     #Prefix all urls defined in `urls_and_views_demos.departments.urls` with `departments/`
     path("departments/", include("urls_and_views_demos.departments.urls")),
+    # path("employees", include([
+    # path("asd/", index),
+    # path("asd2/", department_2_details)
+    # ])),
 )
 
 '''

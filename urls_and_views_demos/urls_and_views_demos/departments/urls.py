@@ -1,5 +1,5 @@
 from django.urls import path
-from urls_and_views_demos.departments.views import index, department_1_details, department_2_details, department_details, department_details_by_name
+from urls_and_views_demos.departments.views import department_details, department_details_by_name
 
 
 urlpatterns = (

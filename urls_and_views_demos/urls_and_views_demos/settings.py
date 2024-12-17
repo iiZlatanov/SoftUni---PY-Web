@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Application apps
     "urls_and_views_demos.departments",
+    "urls_and_views_demos.core",
 ]
 
 MIDDLEWARE = [
