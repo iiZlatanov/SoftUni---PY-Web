@@ -6,7 +6,14 @@
 </head>
 <body>
 
-<h1>It works, from template</h1>
+<h1>{{ title }}</h1>
+<h2> Non-existent from here {{ does_not_exist }} to here</h2>
+<ul>
+    <li>Method: {{ method }}</li>
+    <li>Method from request: {{ request.method }}</li>
+    <li>Path: {{ path }}</li>
+    <li>User: {{ user }}</li>
+</ul>
 
 </body>
 </html>

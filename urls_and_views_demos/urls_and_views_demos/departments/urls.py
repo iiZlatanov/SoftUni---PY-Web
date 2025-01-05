@@ -1,6 +1,6 @@
-from django.urls import path
-from urls_and_views_demos.departments.views import department_details, department_details_by_name
+from django.urls import path, reverse
 
+from urls_and_views_demos.departments.views import department_details, department_details_by_name
 
 urlpatterns = (
     # path("departments/1/", department_1_details),
@@ -8,3 +8,5 @@ urlpatterns = (
     path("<int:pk>/", department_details), # departments/<int:pk>/
     path("<str:name>/", department_details_by_name),
 )
+
+
