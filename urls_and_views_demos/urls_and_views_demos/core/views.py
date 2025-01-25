@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, JsonResponse, Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
@@ -42,3 +42,28 @@ def redirect_to_index(request):
 
 def redirect_to_index_with_params(request):
     return redirect('index_with_pk_and_slug', pk=19, slug='Gosho')
+
+def index_json(request, *args, **kwargs):
+    content = {
+        "args": args,
+        "kwargs": kwargs,
+        "path": request.path,
+        "method": request.method,
+        "user": str(request.user),
+    }
+
+    return JsonResponse(
+        content,
+    # content_type="application/json",
+    # status=201,)
+    )
+
+
+def raise_error(request):
+    return HttpResponseNotFound(
+        status=404,
+    )
+
+
+def raise_exception(request):
+    raise Http404
