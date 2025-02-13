@@ -1,7 +1,22 @@
-from django.shortcuts import render
+import random
 
+from django.shortcuts import render
+import datetime
+
+class Person:
+    def __init__(self, first_name, last_name, age=None):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
 
 def index(request):
+    person = Person("Doncho",
+                    "Minkov"
+        )
     context = {
         "title": "Employees list",
         "new.employee": "Doncho", # invalid
@@ -13,6 +28,18 @@ def index(request):
             "first_name": "Doncho",
             "last_name": "Minkov",
         },
+        "person_obj": person,
+        "person_dict": person.__dict__,
+        
+        
+        
+        "names": ["Doncho", "Gosho", "Maria"],
+        "ages": [random.randrange(1, 100) for _ in range(10)],
+        "ages_empty": [],
+        "date": datetime.date.today(),
     }
+
+    print(context["person"]["first_name"])
+    print(context["person"].items())
 
     return render(request, 'employees/index.html', context)
