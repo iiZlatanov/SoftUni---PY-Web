@@ -1,6 +1,7 @@
 import random
 
 from django.shortcuts import render
+from django.urls import reverse
 import datetime
 
 class Person:
@@ -37,9 +38,18 @@ def index(request):
         "ages": [random.randrange(1, 100) for _ in range(10)],
         "ages_empty": [],
         "date": datetime.date.today(),
+        "get_params": request.GET,
     }
+    print(reverse('index'))
 
     print(context["person"]["first_name"])
     print(context["person"].items())
 
     return render(request, 'employees/index.html', context)
+
+
+def employee_details(request, pk):
+    context = {
+        "pk": pk,
+    }
+    return render(request, template_name='employees/details.html', context=context)
