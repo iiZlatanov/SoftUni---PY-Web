@@ -1,18 +1,6 @@
-<form action="/create/" method="post"> <!-- action=CURRENT_URL, method=get -->
-    {# Form fields #}
-    {# Inputs #}
-    <input type="text" name="first_name"> {# single-line text #}
-    <input type="number" name="age">
+<form action="{% url 'index' %}" method="post">
+    {{ employee_form.as_p }}
     
-    {# Dropdowns #}
-    <select name="interests">
-        <option value="1">Gaming</option>
-        <option value="2">Reading books</option>
-        <option value="3">Watching movies</option>
-        <option value="4">Sport</option>
-    </select>
-    
+    {% csrf_token %}
     <button>Send</button>
-    {# Old school: #}
-    {# <input type="submit" value="Send"> #}
 </form>
