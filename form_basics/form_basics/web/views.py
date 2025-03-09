@@ -1,8 +1,49 @@
 from django.shortcuts import render, redirect
 #
 # from form_basics.web.forms import EmployeeForm
-from form_basics.web.forms import EmployeeForm
+from form_basics.web.forms import EmployeeForm,DemoForm
+from form_basics.web.models import Employee
 
+def update_employee(request, pk):
+    employee = Employee.objects.get(pk=pk)
+
+    if request.method == 'GET':
+        form = EmployeeForm(instance=employee)
+
+    else:
+        form = EmployeeForm(request.POST, instance=employee)
+        if form.is_valid():
+            print(form.cleaned_data['department'])
+            form.save()
+            return redirect('index-models')
+
+    context={
+        #"normal_employee_form": EmployeeNormalForm(),
+        "form": form,
+        "employee": employee,
+    }
+
+    return render(request, "web/employee_details.html", context)
+
+
+def index_models(request):
+    if request.method == 'GET':
+        form = EmployeeForm()
+
+    else:
+        form = EmployeeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index-models')
+
+    context={
+        #"normal_employee_form": EmployeeNormalForm(),
+        "employee_form": form,
+        "employee_list": Employee.objects.all(),
+
+    }
+
+    return render(request, "web/modelform_index.html", context)
 
 def index(request):
     form = EmployeeForm(
