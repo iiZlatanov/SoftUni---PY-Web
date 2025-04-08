@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doncho's App</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="{% url 'index' %}">Index</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+    </ul>
+</nav>
+    <h1>Welcome to Doncho's App!</h1>
+    
+    {# `block` defines a placeholder where inheritor #}
+    {# templates can insert their #}
+    {# custom/specific HTML #}
+    {% block main_content %}
+        {# We can define a default HTML #}
+        <h2>No content</h2>
+    {% endblock %}
+    
+    <footer>
+        <ul>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Company</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
