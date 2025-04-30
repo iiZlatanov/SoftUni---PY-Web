@@ -1,0 +1,23 @@
+<header>
+    <div>
+        <h1><a href="{% url 'index' %}">
+            {% if text %}
+                {{ text }}
+            {% else %}
+                Doncho's App
+            {% endif %}
+        </a></h1>
+        {# included templates have access to the view context #}
+        {% if request.user.is_authenticated %}
+            {{ request.user }}
+        {% else %}
+            Anonymous
+        {% endif %}
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Index</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+        </ul>
+    </nav>
+</header>

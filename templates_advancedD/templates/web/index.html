@@ -1,7 +1,21 @@
-{% extends 'master.html' %}
+{% extends 'master_with_sidebar.html' %}
 
-{% block main_content %}
-    <h2>It works!</h2>
+{% block page_title %} - Home {% endblock %}
+
+{% block body_end_scripts %}
+    <script>
+        setTimeout(() => {
+            document.body.innerHTML += '<h2>After 2 seconds</h2>';
+        }, 2000);
+    </script>
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'web/about.html' %} {# Don't do this. #}
+{% endblock %}
+
+{% block content %}
+    <h2>This is {{ cat_name|upper }}</h2>
     <img
             width="200"
             src="{{ cat_image }}" alt="">
