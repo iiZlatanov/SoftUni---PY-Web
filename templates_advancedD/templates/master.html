@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Doncho's App {% block page_title %}{% endblock %}</title>
@@ -19,8 +18,8 @@
 <body>
     {% block body_start_scripts %} {% endblock %}
 
-    {#{% include 'partials/header.html' with text='The app about cats' %}#}
-    {% include 'partials/header.html' %}
+    {% include 'partials/header.html' with text='The app about cats' %}
+    {#{% include 'partials/header.html' %}#}
 
     <h1>Welcome to Doncho's App!</h1>
 
