@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (templates_advancedD)" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (django101)" project-jdk-type="Python SDK" />
 </project>

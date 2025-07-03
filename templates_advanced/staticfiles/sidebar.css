@@ -1,0 +1,9 @@
+.root {
+    display: flex;
+        flex: 1;
+}
+
+.root .left {
+    min-width: 100px;
+    background: #c5c5c5;
+}

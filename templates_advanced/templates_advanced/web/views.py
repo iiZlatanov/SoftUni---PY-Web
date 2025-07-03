@@ -2,17 +2,22 @@ import random
 
 from django.shortcuts import render
 
-cats = [
-    'https://cdn.britannica.com/39/226539-050-D21D7721/Portrait-of-a-cat-with-whiskers-visible.jpg',
-    'https://lacvets.com/wp-content/uploads/2023/01/what-is-a-cats-lifespan-lakeland-fl-scaled.jpg',
-]
+cat_images = (
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZgX_lhpIZzVFs0vDnLmTxDLAk0uW9sNAFJQ&s',
+    'https://cdn.hswstatic.com/gif/shutterstock-698651233-hero.jpg',
+)
 
+cat_names = (
+    'Pepelyashka',
+    'GoSho',
+)
 
 def index(request):
+    index = random.randint(0, len(cat_images) - 1)
     context = {
-        'cat_image': random.choice(cats),
+        'cat_image': cat_images[index],
+        'cat_name': cat_names[index],
     }
-
     return render(request, 'web/index.html', context)
 
 
