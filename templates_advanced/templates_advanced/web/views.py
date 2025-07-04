@@ -17,6 +17,7 @@ def index(request):
     context = {
         'cat_image': cat_images[index],
         'cat_name': cat_names[index],
+        'numbers': [x + 1 for x in range (-10, 10)],
     }
     return render(request, 'web/index.html', context)
 
